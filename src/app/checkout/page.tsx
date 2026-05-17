@@ -46,22 +46,22 @@ export default function CheckoutPage() {
   
   if (cart.length === 0) {
     return (
-      <div className="container" style={{ paddingTop: "150px", textAlign: "center", minHeight: "60vh" }}>
-        <h1 style={{ fontSize: "2.5rem", marginBottom: "20px" }}>Cart is Empty</h1>
+      <div className="container" style={{ paddingTop: "200px", textAlign: "center", minHeight: "70vh" }}>
+        <h1 style={{ fontSize: "2rem", marginBottom: "24px", fontWeight: 400 }}>Your cart is empty.</h1>
       </div>
     );
   }
 
   return (
-    <div className="container" style={{ paddingTop: "120px", paddingBottom: "80px" }}>
+    <div className="container" style={{ paddingTop: "160px", paddingBottom: "100px" }}>
       <div className="cart-layout">
         <div>
-          <h1 style={{ fontSize: "2rem", fontWeight: 800, marginBottom: "32px" }}>Checkout</h1>
-          <form onSubmit={handleSubmit} className="glass-panel" style={{ padding: "32px" }}>
-            <h2 style={{ fontSize: "1.2rem", marginBottom: "16px" }}>Contact Information</h2>
-            <input type="email" placeholder="Email" className="input-field" required />
+          <h1 style={{ fontSize: "2rem", fontWeight: 400, marginBottom: "40px" }}>Checkout</h1>
+          <form onSubmit={handleSubmit}>
+            <h2 style={{ fontSize: "1rem", marginBottom: "20px", color: "var(--gray-text)", textTransform: "uppercase", letterSpacing: "0.05em" }}>Contact</h2>
+            <input type="email" placeholder="Email Address" className="input-field" required />
             
-            <h2 style={{ fontSize: "1.2rem", marginBottom: "16px", marginTop: "24px" }}>Shipping Address</h2>
+            <h2 style={{ fontSize: "1rem", marginBottom: "20px", marginTop: "40px", color: "var(--gray-text)", textTransform: "uppercase", letterSpacing: "0.05em" }}>Shipping</h2>
             <div style={{ display: "flex", gap: "16px" }}>
               <input type="text" placeholder="First Name" className="input-field" required />
               <input type="text" placeholder="Last Name" className="input-field" required />
@@ -72,11 +72,14 @@ export default function CheckoutPage() {
               <input type="text" placeholder="Postal Code" className="input-field" required />
             </div>
             
-            <h2 style={{ fontSize: "1.2rem", marginBottom: "16px", marginTop: "24px" }}>Secure Payment</h2>
-            <div style={{ border: "1px solid var(--border)", padding: "16px", borderRadius: "0", marginBottom: "24px", backgroundColor: "#0a0a0a" }}>
-              <p style={{ color: "var(--gray-text)", fontSize: "0.9rem", marginBottom: "12px" }}>
-                🔒 This is a secure 128-bit SSL encrypted payment.
-              </p>
+            <h2 style={{ fontSize: "1rem", marginBottom: "20px", marginTop: "40px", color: "var(--gray-text)", textTransform: "uppercase", letterSpacing: "0.05em" }}>Payment</h2>
+            <div style={{ border: "1px solid var(--border)", padding: "24px", borderRadius: "4px", marginBottom: "40px", backgroundColor: "var(--black-card)" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "20px" }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <p style={{ color: "var(--gray-text)", fontSize: "0.85rem", letterSpacing: "0.02em" }}>
+                  Secure 128-bit SSL Encrypted Transaction
+                </p>
+              </div>
               <input type="text" placeholder="Card Number" className="input-field" required />
               <div style={{ display: "flex", gap: "16px" }}>
                 <input type="text" placeholder="MM/YY" className="input-field" required />
@@ -84,26 +87,26 @@ export default function CheckoutPage() {
               </div>
             </div>
             
-            <button type="submit" className="btn-accent" style={{ width: "100%", padding: "16px", fontSize: "1.1rem" }} disabled={loading}>
-              {loading ? "Processing..." : `PAY $${cartTotal.toFixed(2)}`}
+            <button type="submit" className="btn-accent" style={{ width: "100%" }} disabled={loading}>
+              {loading ? "PROCESSING..." : `PAY $${cartTotal.toFixed(2)}`}
             </button>
           </form>
         </div>
         
         <div>
-          <div className="order-summary glass-panel">
-            <h2 style={{ fontSize: "1.2rem", marginBottom: "24px" }}>Order Details</h2>
+          <div className="order-summary">
+            <h2 style={{ fontSize: "1rem", marginBottom: "32px", color: "var(--gray-text)", textTransform: "uppercase", letterSpacing: "0.05em" }}>Order Details</h2>
             {cart.map(item => (
-              <div key={item.id} style={{ display: "flex", gap: "16px", marginBottom: "16px" }}>
-                <img src={item.image} alt={item.name} style={{ width: "60px", height: "70px", objectFit: "cover", borderRadius: "0" }} />
-                <div>
-                  <h4 style={{ fontSize: "0.9rem" }}>{item.name}</h4>
-                  <p style={{ color: "var(--gray-text)", fontSize: "0.9rem" }}>Qty: {item.quantity}</p>
-                  <p style={{ fontWeight: 600 }}>${(item.price * item.quantity).toFixed(2)}</p>
+              <div key={item.id} style={{ display: "flex", gap: "20px", marginBottom: "24px" }}>
+                <img src={item.image} alt={item.name} style={{ width: "70px", height: "90px", objectFit: "cover", borderRadius: "2px" }} />
+                <div style={{ flexGrow: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                  <h4 style={{ fontSize: "0.95rem", fontWeight: 500 }}>{item.name}</h4>
+                  <p style={{ color: "var(--gray-text)", fontSize: "0.85rem", marginTop: "4px" }}>Qty: {item.quantity}</p>
+                  <p style={{ marginTop: "auto", fontSize: "0.95rem" }}>${(item.price * item.quantity).toFixed(2)}</p>
                 </div>
               </div>
             ))}
-            <div style={{ borderTop: "1px solid var(--border)", paddingTop: "16px", marginTop: "16px", display: "flex", justifyContent: "space-between", fontWeight: 700 }}>
+            <div className="summary-total">
               <span>Total</span>
               <span>${cartTotal.toFixed(2)}</span>
             </div>

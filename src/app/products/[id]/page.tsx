@@ -17,33 +17,33 @@ export default function ProductDetails({ params }: { params: Promise<{ id: strin
   }
 
   return (
-    <div className="container" style={{ paddingTop: "120px", paddingBottom: "60px" }}>
-      <Link href="/products" style={{ color: "var(--gray-text)", marginBottom: "24px", display: "inline-block" }}>
-        &larr; Back to Shop
+    <div className="container" style={{ paddingTop: "160px", paddingBottom: "100px" }}>
+      <Link href="/products" style={{ color: "var(--gray-text)", marginBottom: "40px", display: "inline-flex", alignItems: "center", fontSize: "0.9rem", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+        &larr; Back to Gear
       </Link>
       
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "60px", marginTop: "20px" }}>
-        <div style={{ borderRadius: "0", overflow: "hidden", backgroundColor: "#111", aspectRatio: "4/5", clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%)" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", gap: "80px" }}>
+        <div style={{ overflow: "hidden", backgroundColor: "var(--black-card)", aspectRatio: "3/4", borderRadius: "4px" }}>
           <img 
             src={product.image} 
             alt={product.name} 
-            style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(10%) contrast(1.1)" }}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
         </div>
         
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-          <h1 style={{ fontSize: "2.5rem", fontWeight: 800, marginBottom: "16px", fontFamily: "var(--font-header)", textTransform: "uppercase" }}>{product.name}</h1>
-          <p style={{ fontSize: "1.5rem", color: "var(--accent)", marginBottom: "32px", fontFamily: "var(--font-header)", fontWeight: 700 }}>
+          <h1 style={{ fontSize: "3rem", fontWeight: 400, marginBottom: "16px", letterSpacing: "-0.02em" }}>{product.name}</h1>
+          <p style={{ fontSize: "1.5rem", color: "var(--gray-text)", marginBottom: "40px" }}>
             ${product.price.toFixed(2)}
           </p>
           
-          <p style={{ lineHeight: 1.8, marginBottom: "40px", color: "#ddd", fontFamily: "var(--font-main)" }}>
+          <p style={{ lineHeight: 1.8, marginBottom: "48px", color: "var(--white-text)", fontSize: "1.05rem", fontWeight: 300 }}>
             {product.description}
           </p>
           
           <button 
             className="btn-accent" 
-            style={{ width: "100%", padding: "16px", fontSize: "1.1rem" }}
+            style={{ width: "100%" }}
             onClick={() => {
               addToCart(product);
               alert("Added to cart!");
@@ -52,12 +52,13 @@ export default function ProductDetails({ params }: { params: Promise<{ id: strin
             ADD TO CART
           </button>
           
-          <div style={{ marginTop: "40px", paddingTop: "40px", borderTop: "1px solid var(--border)" }}>
-            <p style={{ color: "var(--gray-text)", fontSize: "0.9rem", display: "flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
-              <span style={{ color: "var(--success)" }}>●</span> In Stock, ready to ship
+          <div style={{ marginTop: "60px", paddingTop: "40px", borderTop: "1px solid var(--border)" }}>
+            <p style={{ color: "var(--gray-text)", fontSize: "0.9rem", display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+              <span style={{ display: "inline-block", width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "var(--success)" }}></span> 
+              In Stock, ready to ship
             </p>
-            <p style={{ color: "var(--gray-text)", fontSize: "0.9rem" }}>
-              Free shipping on orders over $150
+            <p style={{ color: "var(--gray-text)", fontSize: "0.9rem", paddingLeft: "20px" }}>
+              Free expedited shipping on orders over $150
             </p>
           </div>
         </div>

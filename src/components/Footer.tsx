@@ -5,9 +5,9 @@ export default function Footer() {
     <footer className="footer container">
       <div className="footer-grid">
         <div className="footer-col">
-          <h3 className="nav-logo" style={{ marginBottom: "20px", fontStyle: "italic", display: "flex", alignItems: "center" }}>
-            ZAC<span style={{ color: "var(--accent)", margin: "0 -2px" }}>⚡</span>MO
-          </h3>
+          <Link href="/" style={{ display: "inline-block", marginBottom: "20px" }}>
+            <img src="/logo.png" alt="ZACMO Logo" style={{ height: "40px", objectFit: "contain" }} />
+          </Link>
           <p style={{ color: "var(--gray-text)", fontSize: "0.9rem" }}>
             The future of minimal, visually stunning streetwear.
           </p>
