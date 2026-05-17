@@ -22,8 +22,8 @@ export default function Navbar() {
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="container nav-content">
-        <Link href="/" className="nav-logo">
-          NXT.
+        <Link href="/" className="nav-logo" style={{ fontStyle: "italic", display: "flex", alignItems: "center" }}>
+          ZAC<span style={{ color: "var(--accent)", margin: "0 -2px" }}>⚡</span>MO
         </Link>
         <div className="nav-links">
           <Link href="/products">Shop</Link>

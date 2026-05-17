@@ -1,7 +1,7 @@
 export const products = [
   {
     id: "prod_1",
-    name: "NXT Minimal Hoodie",
+    name: "ZACMO Minimal Hoodie",
     price: 85.00,
     image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1000&auto=format&fit=crop",
     description: "Premium heavy-weight cotton blend. Featuring a sleek, minimalist cut perfect for urban environments. Designed for warmth, comfort, and unparalleled style."

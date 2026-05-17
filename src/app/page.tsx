@@ -54,7 +54,7 @@ export default function Home() {
                 />
               </Link>
               <div className="product-info">
-                <h3 className="product-title">NXT Minimal Hoodie</h3>
+                <h3 className="product-title">ZACMO Minimal Hoodie</h3>
                 <p className="product-price">$85.00</p>
               </div>
             </div>

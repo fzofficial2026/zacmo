@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "NXT. | Modern Streetwear",
+  title: "ZACMO | Modern Streetwear",
   description: "Visually stunning 3D clothing brand.",
 };
 

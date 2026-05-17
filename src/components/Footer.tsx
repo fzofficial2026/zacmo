@@ -5,7 +5,9 @@ export default function Footer() {
     <footer className="footer container">
       <div className="footer-grid">
         <div className="footer-col">
-          <h3 className="nav-logo" style={{ marginBottom: "20px" }}>NXT.</h3>
+          <h3 className="nav-logo" style={{ marginBottom: "20px", fontStyle: "italic", display: "flex", alignItems: "center" }}>
+            ZAC<span style={{ color: "var(--accent)", margin: "0 -2px" }}>⚡</span>MO
+          </h3>
           <p style={{ color: "var(--gray-text)", fontSize: "0.9rem" }}>
             The future of minimal, visually stunning streetwear.
           </p>
@@ -35,7 +37,7 @@ export default function Footer() {
         </div>
       </div>
       <div style={{ textAlign: "center", marginTop: "60px", paddingTop: "20px", borderTop: "1px solid var(--border)", color: "var(--gray-text)", fontSize: "0.85rem" }}>
-        &copy; {new Date().getFullYear()} NXT. All rights reserved.
+        &copy; {new Date().getFullYear()} ZACMO. All rights reserved.
       </div>
     </footer>
   );
