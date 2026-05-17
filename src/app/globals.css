@@ -57,22 +57,23 @@ button {
 }
 
 /* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Utility */
 .glass-panel {
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--border);
+  background: rgba(5, 5, 5, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 0;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
 }
 
 /* Diagonal Dividers */
@@ -102,53 +103,52 @@ button {
 .btn-primary {
   background-color: var(--white-text);
   color: var(--black-bg);
-  padding: 16px 32px;
+  padding: 16px 36px;
   font-weight: 700;
   font-size: 0.9rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   clip-path: polygon(15px 0, 100% 0, calc(100% - 15px) 100%, 0 100%);
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
 .btn-primary:hover {
   background-color: var(--accent);
   color: var(--white-text);
-  transform: translateX(5px);
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
 }
 
 .btn-secondary {
   background-color: transparent;
   color: var(--white-text);
-  padding: 16px 32px;
+  padding: 16px 36px;
   font-weight: 700;
   font-size: 0.9rem;
-  letter-spacing: 0.1em;
-  border: 2px solid var(--white-text);
+  letter-spacing: 0.15em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   clip-path: polygon(15px 0, 100% 0, calc(100% - 15px) 100%, 0 100%);
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-secondary:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background-color: rgba(255,0,0,0.05);
-  transform: translateX(5px);
+  border-color: var(--white-text);
+  background-color: rgba(255,255,255,0.05);
+  transform: translateY(-2px);
 }
 
 .btn-accent {
   background-color: var(--accent);
   color: white;
-  padding: 16px 32px;
+  padding: 16px 36px;
   font-weight: 700;
   font-size: 0.9rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   clip-path: polygon(15px 0, 100% 0, calc(100% - 15px) 100%, 0 100%);
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-accent:hover {
   background-color: var(--accent-hover);
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(255, 0, 0, 0.5);
 }
 
 /* Navbar */
