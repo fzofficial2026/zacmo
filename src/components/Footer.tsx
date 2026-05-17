@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="footer-grid">
         <div className="footer-col">
           <Link href="/" style={{ display: "inline-block", marginBottom: "20px" }}>
-            <img src="/logo.png" alt="ZACMO Logo" style={{ height: "40px", objectFit: "contain" }} />
+            <img src="/logo.png" alt="ZACMO Logo" style={{ height: "40px", objectFit: "contain", mixBlendMode: "screen" }} />
           </Link>
           <p style={{ color: "var(--gray-text)", fontSize: "0.9rem" }}>
             The future of minimal, visually stunning streetwear.

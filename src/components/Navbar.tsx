@@ -23,7 +23,7 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="container nav-content">
         <Link href="/" className="nav-logo" style={{ display: "flex", alignItems: "center" }}>
-          <img src="/logo.png" alt="ZACMO Logo" style={{ height: "36px", objectFit: "contain" }} />
+          <img src="/logo.png" alt="ZACMO Logo" style={{ height: "36px", objectFit: "contain", mixBlendMode: "screen" }} />
         </Link>
         <div className="nav-links">
           <Link href="/products">Shop</Link>
