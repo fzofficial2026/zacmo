@@ -73,7 +73,7 @@ export default function CheckoutPage() {
             </div>
             
             <h2 style={{ fontSize: "1.2rem", marginBottom: "16px", marginTop: "24px" }}>Secure Payment</h2>
-            <div style={{ border: "1px solid var(--border)", padding: "16px", borderRadius: "8px", marginBottom: "24px", backgroundColor: "#111" }}>
+            <div style={{ border: "1px solid var(--border)", padding: "16px", borderRadius: "0", marginBottom: "24px", backgroundColor: "#0a0a0a" }}>
               <p style={{ color: "var(--gray-text)", fontSize: "0.9rem", marginBottom: "12px" }}>
                 🔒 This is a secure 128-bit SSL encrypted payment.
               </p>
@@ -85,7 +85,7 @@ export default function CheckoutPage() {
             </div>
             
             <button type="submit" className="btn-accent" style={{ width: "100%", padding: "16px", fontSize: "1.1rem" }} disabled={loading}>
-              {loading ? "Processing..." : `Pay $${cartTotal.toFixed(2)}`}
+              {loading ? "Processing..." : `PAY $${cartTotal.toFixed(2)}`}
             </button>
           </form>
         </div>
@@ -95,7 +95,7 @@ export default function CheckoutPage() {
             <h2 style={{ fontSize: "1.2rem", marginBottom: "24px" }}>Order Details</h2>
             {cart.map(item => (
               <div key={item.id} style={{ display: "flex", gap: "16px", marginBottom: "16px" }}>
-                <img src={item.image} alt={item.name} style={{ width: "60px", height: "70px", objectFit: "cover", borderRadius: "4px" }} />
+                <img src={item.image} alt={item.name} style={{ width: "60px", height: "70px", objectFit: "cover", borderRadius: "0" }} />
                 <div>
                   <h4 style={{ fontSize: "0.9rem" }}>{item.name}</h4>
                   <p style={{ color: "var(--gray-text)", fontSize: "0.9rem" }}>Qty: {item.quantity}</p>

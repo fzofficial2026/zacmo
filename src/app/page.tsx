@@ -12,38 +12,39 @@ export default function Home() {
         <div className="hero-3d-container">
           <Scene />
         </div>
+        <div className="diagonal-divider-bottom"></div>
         <div className="container hero-content animate-fade-in">
           <h1 className="hero-title">
-            DEFINE YOUR<br />FUTURE.
+            <span style={{ color: "transparent", WebkitTextStroke: "2px var(--white-text)" }}>UNLEASH</span><br />
+            THE <span style={{ color: "var(--accent)" }}>POWER.</span>
           </h1>
           <p className="hero-subtitle">
-            Experience our new collection in full interactive 3D. 
-            Built for the modern world.
+            Engineered for the fearless. ZACMO blends high-tech performance with aggressive streetwear aesthetics. 
+            Step into the new era.
           </p>
-          <div style={{ display: "flex", gap: "16px" }}>
-            <Link href="/products" className="btn-primary">
+          <div style={{ display: "flex", gap: "24px" }}>
+            <Link href="/products" className="btn-accent">
               Shop Collection
             </Link>
             <Link href="#featured" className="btn-secondary">
-              View Lookbook
+              View Drops
             </Link>
           </div>
         </div>
       </section>
 
       <section id="featured" className="section container">
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "60px", borderBottom: "2px solid var(--border)", paddingBottom: "20px" }}>
           <div>
-            <h2 style={{ fontSize: "2.5rem", fontWeight: 800 }}>Featured Drops</h2>
-            <p style={{ color: "var(--gray-text)" }}>Curated pieces for your everyday rotation.</p>
+            <h2 style={{ fontSize: "3rem", fontWeight: 800 }}>LATEST DROPS</h2>
+            <p style={{ color: "var(--gray-text)", fontFamily: "var(--font-main)" }}>High-voltage threads for the urban grid.</p>
           </div>
-          <Link href="/products" style={{ fontWeight: 600, borderBottom: "1px solid var(--white-text)" }}>
-            View All
+          <Link href="/products" style={{ fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent)" }}>
+            View All &rarr;
           </Link>
         </div>
 
         <div className="product-grid">
-          {/* Featured Product Mocks */}
           {[1, 2, 3].map((i) => (
             <div key={i} className="product-card">
               <Link href={`/products/prod_${i}`} className="product-img-wrapper">
@@ -62,16 +63,19 @@ export default function Home() {
         </div>
       </section>
       
-      <section className="section" style={{ backgroundColor: "#0a0a0a" }}>
-        <div className="container" style={{ textAlign: "center", maxWidth: "600px" }}>
-          <h2 style={{ fontSize: "2.5rem", fontWeight: 800, marginBottom: "20px" }}>Join the Movement</h2>
-          <p style={{ color: "var(--gray-text)", marginBottom: "40px" }}>
-            Subscribe to get early access to drops and exclusive 3D digital wearables.
+      <section className="section" style={{ backgroundColor: "var(--black-card)", position: "relative" }}>
+        <div className="diagonal-divider-top"></div>
+        <div className="container" style={{ textAlign: "center", maxWidth: "800px", padding: "80px 0" }}>
+          <h2 style={{ fontSize: "3.5rem", fontWeight: 800, marginBottom: "24px" }}>
+            JOIN THE <span style={{ color: "var(--accent)" }}>MOVEMENT</span>
+          </h2>
+          <p style={{ color: "var(--gray-text)", marginBottom: "48px", fontFamily: "var(--font-main)", fontSize: "1.2rem" }}>
+            Get early access to exclusive drops, experimental gear, and the ZACMO digital underground.
           </p>
-          <form style={{ display: "flex", gap: "12px" }}>
-            <input type="email" placeholder="Enter your email" className="input-field" style={{ margin: 0 }} />
-            <button type="submit" className="btn-primary" style={{ whiteSpace: "nowrap" }}>
-              Subscribe
+          <form style={{ display: "flex", gap: "16px", justifyContent: "center", maxWidth: "500px", margin: "0 auto" }}>
+            <input type="email" placeholder="ENTER YOUR EMAIL" className="input-field" style={{ margin: 0, flexGrow: 1 }} required />
+            <button type="submit" className="btn-accent" style={{ whiteSpace: "nowrap" }}>
+              SUBSCRIBE
             </button>
           </form>
         </div>

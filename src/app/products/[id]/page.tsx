@@ -23,33 +23,33 @@ export default function ProductDetails({ params }: { params: Promise<{ id: strin
       </Link>
       
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "60px", marginTop: "20px" }}>
-        <div style={{ borderRadius: "12px", overflow: "hidden", backgroundColor: "#111", aspectRatio: "4/5" }}>
+        <div style={{ borderRadius: "0", overflow: "hidden", backgroundColor: "#111", aspectRatio: "4/5", clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%)" }}>
           <img 
             src={product.image} 
             alt={product.name} 
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(10%) contrast(1.1)" }}
           />
         </div>
         
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-          <h1 style={{ fontSize: "2.5rem", fontWeight: 800, marginBottom: "16px" }}>{product.name}</h1>
-          <p style={{ fontSize: "1.5rem", color: "var(--gray-text)", marginBottom: "32px" }}>
+          <h1 style={{ fontSize: "2.5rem", fontWeight: 800, marginBottom: "16px", fontFamily: "var(--font-header)", textTransform: "uppercase" }}>{product.name}</h1>
+          <p style={{ fontSize: "1.5rem", color: "var(--accent)", marginBottom: "32px", fontFamily: "var(--font-header)", fontWeight: 700 }}>
             ${product.price.toFixed(2)}
           </p>
           
-          <p style={{ lineHeight: 1.8, marginBottom: "40px", color: "#ddd" }}>
+          <p style={{ lineHeight: 1.8, marginBottom: "40px", color: "#ddd", fontFamily: "var(--font-main)" }}>
             {product.description}
           </p>
           
           <button 
-            className="btn-primary" 
+            className="btn-accent" 
             style={{ width: "100%", padding: "16px", fontSize: "1.1rem" }}
             onClick={() => {
               addToCart(product);
               alert("Added to cart!");
             }}
           >
-            Add to Cart
+            ADD TO CART
           </button>
           
           <div style={{ marginTop: "40px", paddingTop: "40px", borderTop: "1px solid var(--border)" }}>
