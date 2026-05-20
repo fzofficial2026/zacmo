@@ -6,7 +6,7 @@ import { ShoppingBag, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Navbar() {
-  const { cartCount } = useCart();
+  const { cartCount, toggleCart } = useCart();
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -31,12 +31,12 @@ export default function Navbar() {
           <Link href="#">About</Link>
         </div>
         <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-          <Link href="/cart" className="nav-cart-btn">
+          <button onClick={toggleCart} className="nav-cart-btn" style={{ border: "none", cursor: "pointer" }}>
             <ShoppingBag size={24} />
             {mounted && cartCount > 0 && (
               <span className="cart-badge">{cartCount}</span>
             )}
-          </Link>
+          </button>
         </div>
       </div>
     </nav>

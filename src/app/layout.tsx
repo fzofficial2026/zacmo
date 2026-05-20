@@ -4,12 +4,14 @@ import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
+import CartSidebar from "@/components/CartSidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ZACMO | Modern Streetwear",
-  description: "Visually stunning 3D clothing brand.",
+  title: "ZACMO | Luxury Streetwear",
+  description: "Ultra-premium, minimalist luxury streetwear brand.",
 };
 
 export default function RootLayout({
@@ -20,13 +22,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <CartProvider>
-          <Navbar />
-          <main style={{ minHeight: "100vh" }}>
-            {children}
-          </main>
-          <Footer />
-        </CartProvider>
+        <SmoothScroll>
+          <CartProvider>
+            <Navbar />
+            <CartSidebar />
+            <main style={{ minHeight: "100vh" }}>
+              {children}
+            </main>
+            <Footer />
+          </CartProvider>
+        </SmoothScroll>
       </body>
     </html>
   );
