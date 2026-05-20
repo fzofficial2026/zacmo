@@ -4,16 +4,13 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment, ContactShadows, Text, Center, Float, Sparkles } from "@react-three/drei";
 import { useMemo, useRef, useState, useEffect } from "react";
 import * as THREE from "three";
-import { motion } from "framer-motion-3d";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 
 function LightningBolt() {
   const meshRef = useRef<THREE.Mesh>(null);
-
-  // Define a sharp, aggressive lightning bolt shape
+  
   const shape = useMemo(() => {
     const s = new THREE.Shape();
-    // Centered around 0,0
     s.moveTo(2, 10);
     s.lineTo(-6, -2);
     s.lineTo(0, -2);
@@ -33,19 +30,36 @@ function LightningBolt() {
     bevelThickness: 0.1,
   };
 
-  useFrame((state) => {
+  useFrame((state, delta) => {
     if (meshRef.current) {
-      meshRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.3;
+      // Intro drop animation
+      const elapsedTime = state.clock.elapsedTime;
+      const progress = Math.min(elapsedTime / 1.5, 1);
+      
+      // Easing function (easeOutBounce approximation or just exponential easeOut)
+      const easeOut = 1 - Math.pow(1 - progress, 4);
+      
+      const startY = 30;
+      const endY = 0;
+      
+      // Basic hover after landing
+      const hoverY = Math.sin(elapsedTime * 2) * 0.5;
+      
+      meshRef.current.position.y = startY + (endY - startY) * easeOut + (progress === 1 ? hoverY : 0);
+      meshRef.current.rotation.y = Math.sin(elapsedTime * 0.5) * 0.3;
+      
+      if (progress < 1) {
+         meshRef.current.rotation.x = Math.PI * (1 - easeOut);
+         meshRef.current.scale.setScalar(0.5 + 0.3 * easeOut);
+      } else {
+         meshRef.current.scale.setScalar(0.8);
+         meshRef.current.rotation.x = 0;
+      }
     }
   });
 
   return (
-    <motion.mesh
-      ref={meshRef}
-      initial={{ y: 30, scale: 0.5, rotationX: Math.PI }}
-      animate={{ y: 0, scale: 0.8, rotationX: 0 }}
-      transition={{ type: "spring", damping: 12, stiffness: 100, delay: 0.5 }}
-    >
+    <mesh ref={meshRef}>
       <extrudeGeometry args={[shape, extrudeSettings]} />
       <meshStandardMaterial
         color="#ff0000"
@@ -54,46 +68,67 @@ function LightningBolt() {
         metalness={0.8}
         roughness={0.2}
       />
-    </motion.mesh>
+    </mesh>
   );
 }
 
 function AnimatedText() {
+  const zacRef = useRef<THREE.Group>(null);
+  const moRef = useRef<THREE.Group>(null);
+  const zacMatRef = useRef<any>(null);
+  const moMatRef = useRef<any>(null);
+
+  useFrame((state) => {
+    const elapsedTime = state.clock.elapsedTime;
+    // Fade in after 1.5 seconds (when lightning lands)
+    if (elapsedTime > 1.5) {
+      const fadeProgress = Math.min((elapsedTime - 1.5) / 1.0, 1);
+      const easeOut = 1 - Math.pow(1 - fadeProgress, 3);
+      
+      if (zacRef.current && moRef.current) {
+        zacRef.current.position.x = -10 + (1 * easeOut);
+        moRef.current.position.x = 10 - (1 * easeOut);
+      }
+      
+      if (zacMatRef.current) {
+        zacMatRef.current.opacity = easeOut;
+      }
+      if (moMatRef.current) {
+        moMatRef.current.opacity = easeOut;
+      }
+    } else {
+      if (zacMatRef.current) zacMatRef.current.opacity = 0;
+      if (moMatRef.current) moMatRef.current.opacity = 0;
+    }
+  });
+
   return (
     <group position={[0, 0, 0]}>
-      <motion.group
-        initial={{ opacity: 0, x: -10 }}
-        animate={{ opacity: 1, x: -9 }}
-        transition={{ duration: 1, delay: 1.5, ease: "easeOut" }}
-      >
+      <group ref={zacRef} position={[-10, 0, 0]}>
         <Text
           font="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyeMZhrib2Bg-4.ttf"
           fontSize={6}
           fontWeight={900}
           letterSpacing={-0.05}
           color="#f4f4f4"
-          material-transparent
         >
           ZAC
+          <meshBasicMaterial ref={zacMatRef} attach="material" transparent opacity={0} color="#f4f4f4" />
         </Text>
-      </motion.group>
+      </group>
 
-      <motion.group
-        initial={{ opacity: 0, x: 10 }}
-        animate={{ opacity: 1, x: 9 }}
-        transition={{ duration: 1, delay: 1.5, ease: "easeOut" }}
-      >
+      <group ref={moRef} position={[10, 0, 0]}>
         <Text
           font="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyeMZhrib2Bg-4.ttf"
           fontSize={6}
           fontWeight={900}
           letterSpacing={-0.05}
           color="#f4f4f4"
-          material-transparent
         >
           MO
+          <meshBasicMaterial ref={moMatRef} attach="material" transparent opacity={0} color="#f4f4f4" />
         </Text>
-      </motion.group>
+      </group>
     </group>
   );
 }
