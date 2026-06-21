@@ -1,0 +1,107 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  group: hover;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  background-color: var(--color-black-light);
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.image {
+  transition: transform var(--transition-slow);
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+.viewText {
+  color: var(--color-white);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 2px solid var(--color-white);
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  transform: translateY(20px);
+  transition: transform var(--transition-normal);
+}
+
+.card:hover .viewText {
+  transform: translateY(0);
+}
+
+.wishlistBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(5, 5, 5, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  z-index: 2;
+  transition: all var(--transition-fast);
+}
+
+.wishlistBtn:hover {
+  transform: scale(1.1);
+  background: var(--color-black);
+}
+
+.wishlistBtn.active {
+  color: var(--color-electric-red);
+}
+
+.info {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+}
+
+.name:hover {
+  color: var(--color-electric-red);
+}
+
+.price {
+  color: var(--color-white-muted);
+  font-weight: 500;
+}
